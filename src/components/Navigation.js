@@ -1,4 +1,6 @@
+import React from "react";
 import { NavLink } from "react-router-dom";
+import styled from "styled-components";
 
 export default function Navigation() {
   return (
@@ -8,3 +10,24 @@ export default function Navigation() {
     </nav>
   );
 }
+
+const Nav = styled.nav`
+  display: flex;
+`;
+
+const LinkStyled = styled(NavLink)`
+  border: 1px solid black;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justufy-content: center;
+  text-decoration: none;
+  padding: 10px;
+  color: #333;
+  background-color: lightgrey;
+
+  &.active {
+    background-color: black;
+    color: white;
+  }
+`;

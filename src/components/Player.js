@@ -1,25 +1,38 @@
 import styled from "styled-components";
+import Button from "./Button";
 
-export default function Player({ name, score, onDecrement, onIncrement }) {
+export default function Player({
+  name,
+  score,
+  onDecreasePlayerScore,
+  onIncreasePlayerScore,
+}) {
   return (
-    <Wrapper>
-      <span className='Player__name'>{name}</span>
-      <button onClick={onDecrement}>-</button>
-      <span className='Player__score'>{score}</span>
-      <button onClick={onIncrement}>+</button>
-    </Wrapper>
+    <PlayerWrapper>
+      {name}
+      <PlayerScore>
+        <Button aria-label='Decrease Score' onClick={onDecreasePlayerScore}>
+          -
+        </Button>
+        <span>{score}</span>
+        <Button aria-label='Increase Score' onClick={onIncreasePlayerScore}>
+          +
+        </Button>
+      </PlayerScore>
+    </PlayerWrapper>
   );
 }
 
-const Wrapper = styled.section`
+const PlayerWrapper = styled.section`
   display: flex;
-  justify-content: right;
+  align-item: center;
+  justify-content: space-between;
 `;
 
-const Name = styled.span`
-  margine-right: auto;
-`;
-
-const Score = styled.span`
-  margin: 0 12px;
+const PlayerScore = styled.div`
+  color: black;
+  display: grid;
+  gap 5px;
+  grid-template-column: repeat(3, 1fr);
+  place-item: center;
 `;
